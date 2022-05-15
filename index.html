@@ -8,6 +8,10 @@
 </head>
 <body>
     <script>
+
+let userScore = 0;
+let computerScore = 0;
+
         //user is prompted to enter a choice
         function userChoice() {
             //using .tolowercase forces all text passed through to be the same
@@ -20,7 +24,7 @@
 // KUNAI = SCISSORS
 
 //computer randomly selects a choice using Math.random
-function compChoice() {
+function computerPlay() {
   let compChoice = Math.random();
   if (compChoice < 0.34) {
     compChoice = "shield";
@@ -29,39 +33,75 @@ function compChoice() {
   } else {
     compChoice = "kunai";
   }
-  return compChoice
+  return compChoice;
 }
 //round is played using if and else if statements
 function playRound(userChoice, compChoice) {
   //Shield Choice
   if (userChoice == "shield" && compChoice == "kunai") {
-    return "You Win! shield beats kunai!";
+    console.log("You Win! shield beats kunai!");
+    return userScore += 1 ,"1 Point to user";
+    
   } else if (userChoice == "shield" && compChoice == "scroll") {
-    return "Loser! scroll Beats shield";
+    console.log("Loser! scroll Beats shield");
+    return computerScore +=1, "1 Point to computer";
   } else if (userChoice == "shield" && compChoice == "shield") {
     return "It's a Draw";
   }
   //scroll Choice
   else if (userChoice == "scroll" && compChoice == "shield") {
-    return "You Win! scroll beats shield";
+    console.log("You Win! scroll beats shield");
+    return userScore += 1 ,"1 Point to user";
   } else if (userChoice == "scroll" && compChoice == "kunai") {
-    return "You Lose! kunai beats scroll";
+    console.log("You Lose! kunai beats scroll");
+    return computerScore +=1, "1 Point to computer";
   } else if (userChoice == "scroll" && compChoice == "scroll") {
     return "It's a Draw";
   }
   //kunai Choice
   else if (userChoice == "kunai" && compChoice == "scroll") {
-    return "You win! kunai beat scroll";
+    console.log("You win! kunai beat scroll");
+    return userScore += 1 ,"1 Point to user";
+
   } else if (userChoice == "kunai" && compChoice == "shield") {
-    return "You Lose! shield beats kunai";
+    console.log("You Lose! shield beats kunai");
+    return computerScore +=1, "1 Point to computer";
   } else if (userChoice == "kunai" && compChoice == "kunai") {
     return "It's a Draw";
-  } else {
-    return "Something Went Wrong";
   }
 }
 
+function playGame() {
+  for (let i = 1; i < 6; i++) {
+    let userChoiceInput = prompt("Round " + i + " of 5" +
+        "\n\nPlease choose Shield, Scroll, or Kunai and type it below: " , "");
+    let userChoice = userChoiceInput.toLowerCase();
+    let compChoice = computerPlay();
+
+    alert("You chose " + userChoice + "\nThe computer chose " +
+        compChoice + "\n\n" + playRound(userChoice, compChoice));
+    
+    if (i < 5) {
+      alert("The score is " + userScore + " to " + computerScore);
+    } else {
+      if (userScore > computerScore) {
+        alert("After 5 rounds of play...You beat the computer with a final score of:\n" +
+            userScore + " to " + computerScore);
+      } else if (userScore < computerScore) {
+        alert("After 5 rounds of play...You lost to the computer with a final score of:\n" +
+            userScore + " to " + computerScore);
+      } else {
+        alert("After 5 rounds of play...You tied the computer with a final score of:\n" +
+            userScore + " to " + computerScore);
+      }
+    }
+  }
+}
+
+playGame();
+
 console.log(playRound(userChoice(), compChoice()))
+
 
     </script>
 </body>
