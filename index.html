@@ -68,6 +68,8 @@ function playRound(userChoice, compChoice) {
     return computerScore +=1, "1 Point to computer";
   } else if (userChoice == "kunai" && compChoice == "kunai") {
     return "It's a Draw";
+  } else {
+      return "Please enter Shield, Scroll or Kunai! Point given to computer because you are an idiot.";
   }
 }
 
