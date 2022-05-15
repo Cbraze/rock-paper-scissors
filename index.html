@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //user is prompted to enter a choice
+        function userChoice() {
+            //using .tolowercase forces all text passed through to be the same
+  const userChoice = prompt("Please enter Rock, Paper, or Scissors?").toLowerCase();
+  return userChoice
+}
+
+//computer randomly selects a choice using Math.random
+function compChoice() {
+  let compChoice = Math.random();
+  if (compChoice < 0.34) {
+    compChoice = "rock";
+  } else if (compChoice <= 0.67) {
+    compChoice = "paper";
+  } else {
+    compChoice = "scissors";
+  }
+  return compChoice
+}
+
+
+console.log(playRound(userChoice(), compChoice()))
+    </script>
+</body>
+</html>
