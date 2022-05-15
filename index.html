@@ -11,25 +11,58 @@
         //user is prompted to enter a choice
         function userChoice() {
             //using .tolowercase forces all text passed through to be the same
-  const userChoice = prompt("Please enter Rock, Paper, or Scissors?").toLowerCase();
+  const userChoice = prompt("Please enter Shield, Scroll, or Kunai?").toLowerCase();
   return userChoice
 }
+
+// SHIELD = ROCK
+// SCROLL = PAPER
+// KUNAI = SCISSORS
 
 //computer randomly selects a choice using Math.random
 function compChoice() {
   let compChoice = Math.random();
   if (compChoice < 0.34) {
-    compChoice = "rock";
+    compChoice = "shield";
   } else if (compChoice <= 0.67) {
-    compChoice = "paper";
+    compChoice = "scroll";
   } else {
-    compChoice = "scissors";
+    compChoice = "kunai";
   }
   return compChoice
 }
-
+//round is played using if and else if statements
+function playRound(userChoice, compChoice) {
+  //Shield Choice
+  if (userChoice == "shield" && compChoice == "kunai") {
+    return "You Win! shield beats kunai!";
+  } else if (userChoice == "shield" && compChoice == "scroll") {
+    return "Loser! scroll Beats shield";
+  } else if (userChoice == "shield" && compChoice == "shield") {
+    return "It's a Draw";
+  }
+  //scroll Choice
+  else if (userChoice == "scroll" && compChoice == "shield") {
+    return "You Win! scroll beats shield";
+  } else if (userChoice == "scroll" && compChoice == "kunai") {
+    return "You Lose! kunai beats scroll";
+  } else if (userChoice == "scroll" && compChoice == "scroll") {
+    return "It's a Draw";
+  }
+  //kunai Choice
+  else if (userChoice == "kunai" && compChoice == "scroll") {
+    return "You win! kunai beat scroll";
+  } else if (userChoice == "kunai" && compChoice == "shield") {
+    return "You Lose! shield beats kunai";
+  } else if (userChoice == "kunai" && compChoice == "kunai") {
+    return "It's a Draw";
+  } else {
+    return "Something Went Wrong";
+  }
+}
 
 console.log(playRound(userChoice(), compChoice()))
+
     </script>
 </body>
 </html>
